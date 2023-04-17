@@ -13,7 +13,7 @@ class MetaListGenerator():
             curY = 50   #padding top
             longestLabelLen = util.maxLabelLen(labels)
             curX = (longestLabelLen/2)*15
-            width = 30 * longestLabelLen
+            width = 25 * longestLabelLen
             height = 80
             fill = 'lightBlue'
             result = []
@@ -271,7 +271,7 @@ class MetaListGenerator():
         metalist.append(
         {'shape' : 'text',
               'text' : labels[0],
-               'x' : (base_triangle_points['left']['x'] + (base_triangle_points['right']['x'] - base_triangle_points['left']['x'])/2) - 8.5*len(labels[0]) ,
+               'x' : (base_triangle_points['left']['x'] + (base_triangle_points['right']['x'] - base_triangle_points['left']['x'])/2) - 9*len(labels[0]) ,
                'y' : base_triangle_points['right']['y'] - (currentDetails['segment_height']/6) ,
                'font-size' : '2.4em'
              })
@@ -386,6 +386,8 @@ class MetaListGenerator():
         # send current x,y values for canvas
         max_x = prev_points['right']['x'] + 50
         max_y = prev_points['right']['y'] + 50
+        canvas['canvasWidth'] = prev_points['right']['x']/2 + 100
+        canvas['canvasheight'] = prev_points['right']['y']/2 + 100
         return (metalist,canvas['canvasWidth'],canvas['canvasheight'])
 
          
