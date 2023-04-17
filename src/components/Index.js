@@ -5,55 +5,49 @@ import {FaUserCog,FaPowerOff,FaQuestionCircle} from 'react-icons/fa'
 import {MdSettings,MdDashboardCustomize} from 'react-icons/md'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { useEffect, useRef } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom'
-// import {BsSunFill} from 'react-icons/bs'
+import SvgBackground from './SvgBackground'
 const Index = () => {
-    // const scrollRef = useRef(null);
-
-    // useEffect(() => {
-    //   const scrollElement = scrollRef.current;
-    //   // Set the scroll position to the bottom of the element
-    //   scrollElement.scrollTop = scrollElement.scrollHeight;
-    // }, []);
-    const navigate=useNavigate(); 
+    const navigate=useNavigate();
     const [Prompt, setPrompt] = useState("")
-    const [prompt, setprompt] = useState([{user:"Ai",message:"this"}])
+    const [prompt, setprompt] = useState([])
     const handlePrompt=(e)=>{
-        e.preventDefault();
-        setPrompt(e.target.value); 
+        setPrompt(e.target.value);
+        console.log("hi") 
     }
     async function handleSubmit(e){
         e.preventDefault();
-        setprompt([...prompt,{ user:"user", message:`${Prompt}`}]);
+        setprompt([...prompt,{ user:"user", message:`${Prompt}`},{ user:"Ai", message:`${Prompt}`}]);
+        console.log("hi")
         setPrompt("");
     }
     return (
     <div className='flex flex-row w-screen h-screen'>
         <div className='flex flex-col w-16 bg-black'>
-            <div className='flex flex-col basis-1/2'>
+            <div className='flex flex-col basis-1/2 px-3'>
                 <HiOutlineMenuAlt2 color='white' size={30} className='mx-auto mt-3 cursor-pointer'></HiOutlineMenuAlt2>
                 <FaUserCog color='white' size={25} className='mx-auto mt-10 cursor-pointer'></FaUserCog>
                 <MdDashboardCustomize color='white' size={30} className='mx-auto mt-10 cursor-pointer'></MdDashboardCustomize>
-                {/* <MdOutlineDashboardCustomize color='white' size={30} className='mx-auto mt-10'></MdOutlineDashboardCustomize> */}
                 <FaQuestionCircle color='white' size={25} className='mx-auto mt-10 cursor-pointer'></FaQuestionCircle>
                 
             </div>
-            <div className='flex flex-col-reverse basis-1/2'>
+            <div className='flex flex-col-reverse basis-1/2 px-3'>
                 <FaPowerOff color='white' size={25} className='mx-auto mb-7 cursor-pointer' onClick={() => {
                 navigate("/login", { replace: true });
               }}></FaPowerOff>
                 <MdSettings color='white' size={30} className='mx-auto mb-10 cursor-pointer'></MdSettings>
             </div>
         </div>
-        <div className='flex flex-col w-full rounded-md shadow-bx m-3 relative'>
-            <ScrollToBottom className='basis-11/12 h-full overflow-y-scroll'>
-                {prompt.map((message,index)=>(<Chats key={index} message={message}></Chats>))}
+        <div className='flex flex-col w-11/12 rounded-md shadow-bx mx-auto my-3 overflow-auto'>
+            <ScrollToBottom className='basis-11/12 h-full overflow-y-scroll custom-scroll'>
+                {
+                    prompt.map((message,index)=>(<Chats key={index} message={message}></Chats>))
+                }
             </ScrollToBottom>
             <form onSubmit={handleSubmit}>
             <div className='flex flex-row xl:h-8 2xl:h-10 rounded-md my-auto xl:mx-14 2xl:mx-10 shadow-bx'>
                 <FiSend className='my-auto mx-2 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 cursor-pointer' onClick={handleSubmit}></FiSend>
-                <input className='w-full mr-2 xl:my-0.5 2xl:my-1 rounded-md border p-2 border-black' type='text' onChange={handlePrompt}></input>
+                <input className='w-full mr-2 xl:my-0.5 2xl:my-1 rounded-md border p-2 border-black' type='text' value={Prompt} onChange={(e)=>{setPrompt(e.target.value)}}></input>
             </div>
             </form>
         </div>
@@ -61,6 +55,7 @@ const Index = () => {
   )
 }
 const Chats=({message})=>{
+    console.log()
     if(message.message==="" && message.user==="user")
     return(<div></div>)
     if(message.user==="user" && message.message!=="")
@@ -75,8 +70,8 @@ const Chats=({message})=>{
     )
     if(message.user==="Ai" && message.message!=="")
     return(
-        <div className='flex flex-col my-5 mx-2 h-5/6 bg-white justify-center border border-black text-center w-2/3'>
-            {message.message}
+        <div className='flex flex-col my-5 mx-4 h-5/6 bg-white justify-center shadow-bx rounded-lg text-center w-9/12'>
+            <SvgBackground title={message.message}></SvgBackground>
         </div>
     )
 }
