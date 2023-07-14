@@ -32,7 +32,7 @@ class MetaListGenerator():
                 curdata['shape'] = 'text'
                 curdata['font-size'] = '2.5em'
                 curdata['text'] = labels[x]
-                curdata['x'] = curX + (width - len(labels[x])*17)/2
+                curdata['x'] = curX + (width - len(labels[x])*18)/2
                 curdata['y'] = curY + (height/2)+10
                 result.append(curdata)
                 if(x != len(labels)-1):
@@ -61,7 +61,7 @@ class MetaListGenerator():
         longestLabelLen = util.maxLabelLen(labels)
         parts = len(labels)
         height = 80
-        width = 16 * longestLabelLen
+        width = 18 * longestLabelLen
         labellen = len(labels)*70
         if(len(labels) > 15):
              labellen = len(labels) * 150
