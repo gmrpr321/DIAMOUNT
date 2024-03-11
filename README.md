@@ -11,6 +11,13 @@ Diamount currently supports the following diagram types:
 
 More diagram types may be added in the future.
 
+
+
+![](https://i.ibb.co/4tNLYHN/Screenshot-2024-03-11-142712.png)
+
+
+![](https://i.ibb.co/ZVjPMwc/Screenshot-2024-03-11-142310.png)
+
 ## Steps to Run Locally
 
 ### Backend
@@ -24,3 +31,5 @@ More diagram types may be added in the future.
 1. Navigate to the `frontend` directory within the project's root directory.
 2. Run the following command to install dependencies:
 	`npm install`
+
+
