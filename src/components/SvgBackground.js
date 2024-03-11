@@ -93,23 +93,33 @@ const SvgBackground = (props) => {
 
   return (
     <>
-    <div className="w-full h-full overflow-auto rounded-lg flex flex-col">
-      <div className="flex flex-row justify-center mt-1 basis-1/12">
-        <button className="mx-3 bg-blue-700 my-1 2xl:text-md xl:text-sm px-3 rounded-lg shadow-bx1 text-white" onClick={handleDownload}>Download as PNG</button>
-        <button className="mx-3 bg-blue-700 my-1 2xl:text-md xl:text-sm px-3 rounded-lg shadow-bx1 text-white" onClick={beginProcess}>Generate Image</button>
-        <button className="mx-3 bg-blue-700 my-1 2xl:text-md xl:text-sm px-3 rounded-lg shadow-bx1 text-white" onClick={handleDownloadClick}>Download SVG</button>
-      </div>
-      <div className="flex overflow-scroll bg-white border border-black m-1 rounded-lg basis-11/12 custom-scroll">
-        <svg
-          width={maxX}
-          height={maxY}
-          ref={svgRef}
-          fill="black"
-          viewBox={`0 0 ${maxX} ${maxY}`}
-        >
-          <g transform={`scale(${scale})`} ref={anchorRef}></g>
-        </svg>
-      </div>
+      <div className="w-full h-full overflow-auto rounded-lg flex flex-col">
+        <div className="flex flex-row justify-center mt-1 basis-1/12">
+          <button
+            className="mx-3 bg-blue-700 my-1 2xl:text-md xl:text-sm px-3 rounded-lg shadow-bx1 text-white"
+            onClick={handleDownload}
+          >
+            Download as PNG
+          </button>
+          {/* <button className="mx-3 bg-blue-700 my-1 2xl:text-md xl:text-sm px-3 rounded-lg shadow-bx1 text-white" onClick={beginProcess}>Generate Image</button> */}
+          <button
+            className="mx-3 bg-blue-700 my-1 2xl:text-md xl:text-sm px-3 rounded-lg shadow-bx1 text-white"
+            onClick={handleDownloadClick}
+          >
+            Download SVG
+          </button>
+        </div>
+        <div className="flex overflow-scroll bg-white border border-black m-1 rounded-lg basis-11/12 custom-scroll">
+          <svg
+            width={maxX}
+            height={maxY}
+            ref={svgRef}
+            fill="black"
+            viewBox={`0 0 ${maxX} ${maxY}`}
+          >
+            <g transform={`scale(${scale})`} ref={anchorRef}></g>
+          </svg>
+        </div>
       </div>
     </>
   );
