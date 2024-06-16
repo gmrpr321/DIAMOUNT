@@ -18,6 +18,10 @@ More diagram types may be added in the future.
 
 ![](https://i.ibb.co/ZVjPMwc/Screenshot-2024-03-11-142310.png)
 
+## Design Layout and Execution Flow
+
+![](https://i.ibb.co/C0YCqVN/Untitled-2024-05-03-1633.png)
+
 ## Steps to Run Locally
 
 ### Backend
@@ -31,5 +35,7 @@ More diagram types may be added in the future.
 1. Navigate to the `frontend` directory within the project's root directory.
 2. Run the following command to install dependencies:
 	`npm install`
+3. Next, run the following command to start client server
+         `npm start`
 
 
